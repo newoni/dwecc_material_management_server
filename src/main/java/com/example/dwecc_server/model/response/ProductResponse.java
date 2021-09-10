@@ -3,7 +3,7 @@ package com.example.dwecc_server.model.response;
 public class ProductResponse {
     String product;
     String model;
-    String sepc;
+    String spec;
 
     public String getProduct() {
         return product;
@@ -21,11 +21,11 @@ public class ProductResponse {
         this.model = model;
     }
 
-    public String getSepc() {
-        return sepc;
+    public String getSpec() {
+        return spec;
     }
 
-    public void setSepc(String sepc) {
-        this.sepc = sepc;
+    public void setSpec(String spec) {
+        this.spec = spec;
     }
 }
