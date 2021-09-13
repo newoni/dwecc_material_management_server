@@ -1,6 +1,7 @@
 package com.example.dwecc_server.controller;
 
 import com.example.dwecc_server.model.request.BomSearchRequest;
+import com.example.dwecc_server.model.response.MaterialListResponse;
 import com.example.dwecc_server.model.response.ProductListResponse;
 import com.example.dwecc_server.service.BomSearchService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,4 +30,15 @@ public class BomSearchController {
         return bomSearchService.findProductByName(request);
     }
 
+    @RequestMapping("/material")
+    public MaterialListResponse getMaterialList(@RequestBody BomSearchRequest request){
+
+        System.out.println("getProductList is invoked");
+        System.out.println("request value: " + request);
+        System.out.println("request product value: " + request.getProduct());
+        System.out.println("request model value: " + request.getModel());
+        System.out.println("request spec value: " + request.getSpec());
+
+        return bomSearchService.findMaterialsByName(request);
+    }
 }
