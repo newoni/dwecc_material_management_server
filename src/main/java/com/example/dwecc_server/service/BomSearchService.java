@@ -54,6 +54,9 @@ public class BomSearchService {
     }
 
     public MaterialListResponse findMaterialsByName(BomSearchRequest request){
+        log.info("request product: " + request.getProduct());
+        log.info("request model: " + request.getModel());
+        log.info("request spec: " + request.getSpec());
         //검색 값에 맞는 product 구하기
         Product resProduct = productRepository.findByProductAndModelAndSpec(request.getProduct(), request.getModel(), request.getSpec());
 
