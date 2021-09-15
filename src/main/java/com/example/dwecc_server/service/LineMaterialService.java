@@ -55,4 +55,22 @@ public class LineMaterialService {
         log.info("newLineMaterial.getSeq() " + newLineMaterial.getSeq());
         log.info("newLineMaterial.getQuantity() " + newLineMaterial.getQuantity());
     }
+
+    public void delete(MaterialRequest request){
+        log.info("request value" +request);
+        log.info("request code: "+request.getCode());
+        log.info("request lot: "+request.getLot());
+        log.info("request seq: "+request.getSeq());
+        log.info("request qty: "+request.getQty());
+
+        Material material = materialRepository.findByCode(request.getCode());
+
+        log.info("material id: " + material.getId());
+        log.info("material code: " + material.getCode());
+        log.info("matrial name: " + material.getName());
+
+        Linematerial linematerial =linematerialRepository.findByMaterialInfoAndLotAndSeqAndQuantity(material.getId(),request.getLot(), request.getSeq(), request.getQty());
+
+        linematerialRepository.delete(linematerial);
+    }
 }

@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LinematerialRepository extends JpaRepository<Linematerial, Long> {
+    Linematerial findByMaterialInfoAndLotAndSeqAndQuantity(Long materialId, String lot, Long seq, Long qty);
 }

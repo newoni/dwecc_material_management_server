@@ -25,4 +25,9 @@ public class MaterialManagementController {
     public void create(@RequestBody MaterialRequest request){
         lineMaterialService.create(request);
     }
+
+    @RequestMapping("/delete")
+    public void delete(@RequestBody MaterialRequest request){
+        lineMaterialService.delete(request);
+    }
 }
