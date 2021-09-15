@@ -29,8 +29,6 @@ public class Linematerial {
 
     public long seq;
 
-    public LocalDateTime expDate;
-
     public long quantity;
 
 }
