@@ -2,6 +2,7 @@ package com.example.dwecc_server.controller;
 
 import com.example.dwecc_server.model.entity.Linematerial;
 import com.example.dwecc_server.model.request.MaterialRequest;
+import com.example.dwecc_server.model.response.LineMaterialListResponse;
 import com.example.dwecc_server.service.LineMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class MaterialManagementController {
     LineMaterialService lineMaterialService;
 
     @RequestMapping("/readAll")
-    public List<Linematerial> readAllLineMaterial(){
+    public LineMaterialListResponse readAllLineMaterial(){
         return lineMaterialService.readAllLineMaterial();
     }
 

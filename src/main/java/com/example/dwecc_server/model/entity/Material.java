@@ -24,7 +24,7 @@ public class Material {
 
     String code;
     String name;
-    int boxQuantity;
+    Long boxQuantity;
 
     public Long getId() {
         return id;
@@ -50,11 +50,11 @@ public class Material {
         this.name = name;
     }
 
-    public int getBoxQuantity() {
+    public Long getBoxQuantity() {
         return boxQuantity;
     }
 
-    public void setBoxQuantity(int boxQuantity) {
+    public void setBoxQuantity(Long boxQuantity) {
         this.boxQuantity = boxQuantity;
     }
 }

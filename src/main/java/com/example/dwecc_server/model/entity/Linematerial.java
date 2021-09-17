@@ -23,7 +23,7 @@ public class Linematerial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 
-    public long materialInfo;
+    public long material;
 
     public String lot;
 
