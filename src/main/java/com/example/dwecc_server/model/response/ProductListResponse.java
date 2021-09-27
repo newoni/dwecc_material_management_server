@@ -1,16 +1,11 @@
 package com.example.dwecc_server.model.response;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 
+@Data
 public class ProductListResponse {
 
     ArrayList<ProductResponse> productArrayList;
-
-    public ArrayList<ProductResponse> getProductArrayList() {
-        return productArrayList;
-    }
-
-    public void setProductArrayList(ArrayList<ProductResponse> productArrayList) {
-        this.productArrayList = productArrayList;
-    }
 }

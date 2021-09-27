@@ -1,15 +1,10 @@
 package com.example.dwecc_server.model.response;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 
+@Data
 public class LineMaterialListResponse {
     ArrayList<LineMaterialResponse> lineMaterialResponseArrayList;
-
-    public ArrayList<LineMaterialResponse> getLineMaterialResponseArrayList() {
-        return lineMaterialResponseArrayList;
-    }
-
-    public void setLineMaterialResponseArrayList(ArrayList<LineMaterialResponse> lineMaterialResponseArrayList) {
-        this.lineMaterialResponseArrayList = lineMaterialResponseArrayList;
-    }
 }
