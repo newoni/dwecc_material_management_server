@@ -23,28 +23,4 @@ public class Relation {
     private Long id;
     private Long material;
     private Long product;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setIdx(Long idx) {
-        this.id = idx;
-    }
-
-    public Long getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Long material) {
-        this.material = material;
-    }
-
-    public Long getProduct() {
-        return product;
-    }
-
-    public void setProduct(Long product) {
-        this.product = product;
-    }
 }
