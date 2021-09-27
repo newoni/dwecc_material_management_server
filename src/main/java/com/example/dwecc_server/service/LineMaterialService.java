@@ -24,7 +24,11 @@ public class LineMaterialService {
     @Autowired
     MaterialRepository materialRepository;
 
-//    line의 모든 자재 리스트 출력
+/*
+description: DB에 입력된 모든 자재 데이터 출력
+input: none
+output: LineMaterialListResponse, 이 후 LineMaterialResponseArrayList field 활용
+*/
     public LineMaterialListResponse readAllLineMaterial(){
 //        line material 정보 수집
         List<Linematerial> linematerialList = linematerialRepository.findAll();
@@ -33,13 +37,12 @@ public class LineMaterialService {
 
 //        결과 리턴용 객체 생성
         LineMaterialListResponse lineMaterialListResponse = new LineMaterialListResponse();
-//            객체의 setter를 위한 ArrayList 생성
         ArrayList<LineMaterialResponse> lineMaterialResponseArrayList = new ArrayList<LineMaterialResponse>();
 
 
-//      material 정보 수집 과정
+//      for 문을 돌며 linematerialArrayList의 값에서 material 데이터 추출
         for(int i=0 ; i<linematerialList.size(); i++){
-//            lineMaterialResponse 객체 생성
+//          결과 리스트에 추가할 lineMaterialResponse 객체 생성
             LineMaterialResponse lineMaterialResponse = new LineMaterialResponse();
 
 //            lineMaterialResponse의 lot, seq, qty 정보 기재
@@ -69,6 +72,11 @@ public class LineMaterialService {
         return lineMaterialListResponse;
     }
 
+/*
+description: QR코드 데이터 입력 후 해당 데이터 입력
+input: MaterialRequest, 이 후 code, lot, seq, qty 피수 사용
+output: void
+ */
     public void create(MaterialRequest request){
         log.info("request value" +request);
         log.info("request code: "+request.getCode());
@@ -76,12 +84,14 @@ public class LineMaterialService {
         log.info("request seq: "+request.getSeq());
         log.info("request qty: "+request.getQty());
 
+//        자재코드를 바탕으로 해당 자재 데이터 받아오기
         Material material = materialRepository.findByCode(request.getCode());
 
         log.info("material id: " + material.getId());
         log.info("material code: " + material.getCode());
         log.info("matrial name: " + material.getName());
 
+//        받아온 자재 데이터와 입력 데이터를 혼합하여 Linematerial 객체 생성
         Linematerial linematerial = Linematerial.builder()
                 .material(material.getId())
                 .lot(request.getLot())
@@ -89,6 +99,7 @@ public class LineMaterialService {
                 .quantity(request.getQty())
                 .build();
 
+//       생성한 객체를 DB에 저장
         Linematerial newLineMaterial = linematerialRepository.save(linematerial);
 
         log.info("newLineMaterial.getLot(): " +newLineMaterial.getLot());
@@ -97,6 +108,11 @@ public class LineMaterialService {
         log.info("newLineMaterial.getQuantity() " + newLineMaterial.getQuantity());
     }
 
+/*
+description: QR코드 데이터 입력 후 해당 데이터 삭제
+input: MaterialRequet, 이 후 code, lot, seq, qty 피수 사용
+output: void
+ */
     public void delete(MaterialRequest request){
         log.info("request value" +request);
         log.info("request code: "+request.getCode());
@@ -104,14 +120,17 @@ public class LineMaterialService {
         log.info("request seq: "+request.getSeq());
         log.info("request qty: "+request.getQty());
 
+//        자재코드를 바탕으로 해당 자재 데이터 받아오기
         Material material = materialRepository.findByCode(request.getCode());
 
         log.info("material id: " + material.getId());
         log.info("material code: " + material.getCode());
         log.info("matrial name: " + material.getName());
 
+//        받아온 자재 데이터와 입력 데이터를 혼합하여 현재 라인에 있는 데이터 확인
         Linematerial linematerial =linematerialRepository.findByMaterialAndLotAndSeqAndQuantity(material.getId(),request.getLot(), request.getSeq(), request.getQty());
 
+//        데이터 삭제
         linematerialRepository.delete(linematerial);
     }
 }
