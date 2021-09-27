@@ -8,5 +8,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LinematerialRepository extends JpaRepository<Linematerial, Long> {
+/*
+description: 자재 창고의 모든 Material list 출력
+input: (Long) 자재 id 값, (String) lot 번호, (Long) sequence 번호, (Long) 박스 당 갯수
+output: Linematerial
+ */
     Linematerial findByMaterialAndLotAndSeqAndQuantity(Long material, String lot, Long seq, Long quantity);
 }
